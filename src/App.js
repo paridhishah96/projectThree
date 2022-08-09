@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 
 //  https://quiet-ridge-74718.herokuapp.com/
@@ -44,7 +44,7 @@ function handleClick (e) {
 	urlTwo.search = new URLSearchParams({
 		apikey: apiKey,
 		// track_id:  74376191,
-		q_track: "Bohemian Rhapsody",
+		q_track: userInput,
 		q_artist: "Queen"
 });
   fetch(urlTwo)
