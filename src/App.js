@@ -1,41 +1,24 @@
-import { useState } from 'react';
 import './App.css';
+import Footer from './Footer';
+import Header from './Header';
+import { useState } from 'react';
 
-//  https://quiet-ridge-74718.herokuapp.com/
-// api key f1fc157fc587725a2aa64311ce48541f;
-// const apiUrl = "https://quiet-ridge-74718.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search";
 const apiKey = "f1fc157fc587725a2aa64311ce48541f"
-// const url = new URL(apiUrl);
-// url.search = new URLSearchParams({
-//     apikey: apiKey,
-//     q_track: "shake it off",
-//     q_artist: "taylor swift"
-// });
-// fetch(url)
-//     .then(function (response) {
-//         if (response.ok) {
-//             return response.json();
-//         } else {
-//             throw new Error();
-//         }
-//     })
-//         .then(function (jsonData) {
-//         console.log(jsonData);
-//         })
-//         .catch(function () {
-//         console.log("there's an error :(")
-//         })
-
 const apiUrlTwo = "https://quiet-ridge-74718.herokuapp.com/http://api.musixmatch.com/ws/1.1/matcher.track.get";
 
 
 function App() {
-const [ userInput, setUserInput] = useState("");
+const [ userInputTitle, setUserInputTitle] = useState("");
+const [ userInputArtist, setUserInputArtist] = useState("");
 const [genre, setGenre] = useState([])
 
-function handleInputChange (e) {
-  setUserInput(e.target.value)
+function handleTitleInputChange (e) {
+  setUserInputTitle(e.target.value)
 }
+
+function handleArtistInputChange (e) {
+	setUserInputArtist(e.target.value)
+  }
 
 function handleClick (e) {
 	e.preventDefault();
@@ -43,9 +26,8 @@ function handleClick (e) {
 	const urlTwo = new URL(apiUrlTwo);
 	urlTwo.search = new URLSearchParams({
 		apikey: apiKey,
-		// track_id:  74376191,
-		q_track: userInput,
-		q_artist: "Queen"
+		q_track: userInputTitle,
+		q_artist: userInputArtist
 });
   fetch(urlTwo)
     .then(function (response) {
@@ -56,28 +38,31 @@ function handleClick (e) {
         }
     })
         .then(function (jsonData) {
-        // console.log(jsonData.message.body.track.primary_genres.music_genre_list[0].music_genre.music_genre_name);
-        setGenre(jsonData.message.body.track.primary_genres.music_genre_list[0].music_genre.music_genre_name)
+          console.log(jsonData);
+          setGenre(jsonData.message.body.track.primary_genres.music_genre_list[0].music_genre.music_genre_name)
         })
-        .catch(function () {
-        console.log("there's an error :(")
+        .catch(function (error) {
+          console.log(error)
         })
 }
 
 
   return (
     <div className="App">
-      <h1>React app</h1>
-      <form>
-        <label htmlFor="songName">Song title</label>
-        <input onChange={handleInputChange}  type="songName" name="songName" />
+      <Header />
+      <div className='wrapper'>
+        <form onClick={handleClick}>
+          <label htmlFor="songName">Song Title</label>
+          <input onChange={handleTitleInputChange}  type="songName" name="songName" />
 
-        {/* <label htmlFor="songName">Artist</label>
-        <input onChange={handleInputChange}  type="songName" name="songName" /> */}
+          <label htmlFor="artistName">Artist</label>
+          <input onChange={handleArtistInputChange}  type="artistName" name="artistName" />
 
-        <button onClick={handleClick}> Click to see the genres</button>
-      </form>
-      <p>Genre of the song is: {genre}</p>
+          <button > Click to see the genres</button>
+        </form>
+      </div>
+      <p className='result wrapper'>Genre of the song is: {genre}</p>
+      <Footer />
     </div>
   );
 }
