@@ -2,15 +2,19 @@ import './App.css';
 import Footer from './Footer';
 import Header from './Header';
 import { useState } from 'react';
+import Result from './Result';
+import Form from './Form';
+
+
 
 const apiKey = "f1fc157fc587725a2aa64311ce48541f"
-const apiUrlTwo = "https://quiet-ridge-74718.herokuapp.com/http://api.musixmatch.com/ws/1.1/matcher.track.get";
+const apiUrl = "https://quiet-ridge-74718.herokuapp.com/http://api.musixmatch.com/ws/1.1/matcher.track.get";
 
 
 function App() {
 const [ userInputTitle, setUserInputTitle] = useState("");
 const [ userInputArtist, setUserInputArtist] = useState("");
-const [genre, setGenre] = useState([])
+const [ track, setTrack ] = useState({})
 
 function handleTitleInputChange (e) {
   setUserInputTitle(e.target.value)
@@ -18,53 +22,65 @@ function handleTitleInputChange (e) {
 
 function handleArtistInputChange (e) {
 	setUserInputArtist(e.target.value)
-  }
+}
 
-function handleClick (e) {
+function handleSubmit (e) {
 	e.preventDefault();
 
-	const urlTwo = new URL(apiUrlTwo);
-	urlTwo.search = new URLSearchParams({
+	const url = new URL(apiUrl);
+	url.search = new URLSearchParams({
 		apikey: apiKey,
 		q_track: userInputTitle,
 		q_artist: userInputArtist
 });
-  fetch(urlTwo)
-    .then(function (response) {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error();
-        }
-    })
-        .then(function (jsonData) {
-          console.log(jsonData);
-          setGenre(jsonData.message.body.track.primary_genres.music_genre_list[0].music_genre.music_genre_name)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+	fetch(url)
+		.then(function (response) {
+			if (response.ok) {
+				return response.json();
+			} else {
+				throw new Error();
+			}
+		})
+			.then(function (jsonData) {
+				console.log(jsonData.message.body.track);
+				setTrack(jsonData.message.body.track)
+
+			})
+			.catch(function (error) {
+				console.log(error)
+			})
 }
 
 
-  return (
-    <div className="App">
-      <Header />
-      <div className='wrapper'>
-        <form onClick={handleClick}>
-          <label htmlFor="songName">Song Title</label>
-          <input onChange={handleTitleInputChange}  type="songName" name="songName" />
+  	return (
+		<div className="App">
+			<Header />
+			
 
-          <label htmlFor="artistName">Artist</label>
-          <input onChange={handleArtistInputChange}  type="artistName" name="artistName" />
 
-          <button > Click to see the genres</button>
-        </form>
-      </div>
-      <p className='result wrapper'>Genre of the song is: {genre}</p>
-      <Footer />
-    </div>
-  );
+
+			<Form handleTitleInputChange={handleTitleInputChange} handleArtistInputChange={handleArtistInputChange} handleSubmit={handleSubmit} />
+			{
+				track.track_name 
+				? 
+				<Result trackName={track.track_name} artistName={track.artist_name} albumName={track.album_name} trackLyrics={track.track_share_url} trackGenre={track.primary_genres.music_genre_list[0].music_genre.music_genre_name} />
+				: 
+				<p>Sorry, the information provided does not match any songs. Please enter a different song and artist</p>			
+			}
+
+			<Footer />
+		</div>
+  	);
 }
 
 export default App;
+
+
+// add routes to :
+// get top songs by country (have continent?) https://developer.musixmatch.com/documentation/api-reference/track-chart-get
+// get album discography https://developer.musixmatch.com/documentation/api-reference/artist-albums-get
+// song information http://api.musixmatch.com/ws/1.1/matcher.track.get // already done
+// artist information https://developer.musixmatch.com/documentation/api-reference/artist-search
+//
+//
+//
