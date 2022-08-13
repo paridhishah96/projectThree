@@ -1,6 +1,6 @@
 // Result component that appends if we GET track information from API
 
-const Result = ({trackName, artistName, albumName, trackLyrics, trackGenre}) => {
+const SearchResult = ({trackName, artistName, albumName, trackLyrics, trackGenre}) => {
     return (
         <section className='result wrapper'>
             <p>Some details about the song:</p>
@@ -27,4 +27,4 @@ const Result = ({trackName, artistName, albumName, trackLyrics, trackGenre}) => 
     )
 }
 
-export default Result;
+export default SearchResult;
