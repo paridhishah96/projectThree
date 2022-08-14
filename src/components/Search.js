@@ -4,19 +4,19 @@ import Form from "./Form";
 import SearchResult from "./SearchResult";
 
 const Search = function () {
-    const apiKey = "f1fc157fc587725a2aa64311ce48541f"
+    const apiKey = "f1fc157fc587725a2aa64311ce48541f";
     const apiUrl = "https://quiet-ridge-74718.herokuapp.com/http://api.musixmatch.com/ws/1.1/matcher.track.get";
 
     const [ userInputTitle, setUserInputTitle] = useState("");
     const [ userInputArtist, setUserInputArtist] = useState("");
-    const [ track, setTrack ] = useState({})
+    const [ track, setTrack ] = useState({});
 
     function handleTitleInputChange (e) {
-    setUserInputTitle(e.target.value)
+    setUserInputTitle(e.target.value);
     }
 
     function handleArtistInputChange (e) {
-        setUserInputArtist(e.target.value)
+        setUserInputArtist(e.target.value);
     }
 
     function handleSubmit (e) {
@@ -37,11 +37,11 @@ const Search = function () {
                 }
             })
                 .then(function (jsonData) {
-                    setTrack(jsonData.message.body.track)
+                    setTrack(jsonData.message.body.track);
 
                 })
                 .catch(function (error) {
-                    console.log(error)
+                    console.log(error);
                 })
     }
     
