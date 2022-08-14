@@ -1,8 +1,6 @@
 import './App.css';
 import Footer from './Footer';
 import LandingPage from './LandingPage';
-import Search from './Search';
-import { Routes, Route, Link } from 'react-router-dom';
 
 
 function App() {
