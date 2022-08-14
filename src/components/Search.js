@@ -1,10 +1,10 @@
 // Routes to this page once someone clicks on the Link Search to show info about songs
 import { useState } from "react";
-import Form from "./Form";
+import SearchForm from "./SearchForm";
 import SearchResult from "./SearchResult";
 
 const Search = function () {
-    const apiKey = "f1fc157fc587725a2aa64311ce48541f";
+    const apiKey = "f2173fa361a5723207fc6a1fa4c6af56";
     const apiUrl = "https://quiet-ridge-74718.herokuapp.com/http://api.musixmatch.com/ws/1.1/matcher.track.get";
 
     const [ userInputTitle, setUserInputTitle] = useState("");
@@ -47,14 +47,14 @@ const Search = function () {
     
     return (
         <section>
-            <Form handleTitleInputChange={handleTitleInputChange} handleArtistInputChange={handleArtistInputChange} handleSubmit={handleSubmit} />
+            <SearchForm handleTitleInputChange={handleTitleInputChange} handleArtistInputChange={handleArtistInputChange} handleSubmit={handleSubmit} />
     
             {
                 track.track_name 
                 ? 
                 <SearchResult trackName={track.track_name} artistName={track.artist_name} albumName={track.album_name} trackLyrics={track.track_share_url} trackGenre={track.primary_genres.music_genre_list[0].music_genre.music_genre_name} />
                 : 
-                <p>Sorry, the information provided does not match any songs. Please enter a different song and artist</p>			
+                null			
             }
         </section>
     )

@@ -3,7 +3,7 @@
 const SearchResult = ({trackName, artistName, albumName, trackLyrics, trackGenre}) => {
     return (
         <section className='result wrapper'>
-            <p>Some details about the song:</p>
+            <p>Details about the song:</p>
 			<ul>						
 				<li>
 					<p>	Name of the Song: <span>{trackName}</span></p>
@@ -16,7 +16,7 @@ const SearchResult = ({trackName, artistName, albumName, trackLyrics, trackGenre
 				</li>
 				<li>
 					<p>
-						Lyrics: <a rel="noopener" href={trackLyrics}>Click here</a>
+						Lyrics: <a target="_blank" rel="noopener noreferrer" href={trackLyrics}>Click here</a>
 					</p>
 				</li>
 				<li>

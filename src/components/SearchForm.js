@@ -1,4 +1,4 @@
-const Form = ({handleTitleInputChange, handleArtistInputChange,handleSubmit }) => {
+const SearchForm = ({handleTitleInputChange, handleArtistInputChange,handleSubmit }) => {
     return (
         <div className='wrapper'>
 			<form onSubmit={handleSubmit}>
@@ -14,4 +14,4 @@ const Form = ({handleTitleInputChange, handleArtistInputChange,handleSubmit }) =
     )
 }
 
-export default Form;
+export default SearchForm;

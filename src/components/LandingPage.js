@@ -10,18 +10,18 @@ const LandingPage = () => {
         <>
         <header>
             <div className="wrapper">
-                <h1>Everything Music</h1>
-                <p>Welcome to your one stop shop for information about songs</p>
+                <h1>Song-tastic</h1>
+                <h2>Welcome to your one stop shop for everything songs!</h2>
             </div>
             <div className="landingNav">
                     <nav>
                         <ul>
 
                             <li>
-                                <Link to="/search">Search</Link>
+                                <Link to="/search">Info by Search</Link>
                             </li>
                             <li>
-                                <Link to="/chart">Chart</Link>
+                                <Link to="/chart">Charts by Country</Link>
                             </li>
                         </ul>
                     </nav>
@@ -30,7 +30,6 @@ const LandingPage = () => {
         <Routes>
             <Route path="/search" element={ <Search /> } />
             <Route path="/chart" element={ <Chart /> } />
-
         </Routes>
         </>
     )
