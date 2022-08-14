@@ -16,7 +16,7 @@ const SearchResult = ({trackName, artistName, albumName, trackLyrics, trackGenre
 				</li>
 				<li>
 					<p>
-						Lyrics: <a target="_blank" rel="noopener" href={trackLyrics}>Click here</a>
+						Lyrics: <a rel="noopener" href={trackLyrics}>Click here</a>
 					</p>
 				</li>
 				<li>
