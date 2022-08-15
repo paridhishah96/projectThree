@@ -1,5 +1,8 @@
-// Routes to this page once someone clicks on the Link Search to show info about songs
+// Routes to this page once someone clicks on the Link to show top song chart by user selected country
 import { useState } from "react";
+import ChartForm from "./ChartForm";
+import ChartResult from "./ChartResult";
+import ErrorPage from "./ErrorPage";
 
 const Chart = function () {
     const apiKey = "f2173fa361a5723207fc6a1fa4c6af56";
@@ -32,60 +35,18 @@ const Chart = function () {
                     setTrackList(jsonData.message.body.track_list);
     
                 })
-                .catch(function (error) {
-                    console.log(error);
+                .catch(function () {
+                    return (
+                        <ErrorPage />
+                    )
                 });
     }
 
     
     return (
         <section className="chartSelect" id="chart">
-            <div className="wrapper">
-                <form>
-                    <label htmlFor="countrySelect">Select a Country</label>
-                    <select 
-                    id="countrySelect" 
-                    name="countrySelect"
-                    value={userChoice}
-                    onChange={handleChange}>
-                        <option value="placeholder" disabled>Pick one:</option>
-                        <option value="ar">Argentina</option>
-                        <option value="au">Australia</option>
-                        <option value="br">Brazil</option>
-                        <option value="ca">Canada</option>
-                        <option value="cn">China</option>
-                        <option value="cr">Costa Rica</option>
-                        <option value="cu">Cuba</option>
-                        <option value="fr">France</option>
-                        <option value="in">India</option>
-                        <option value="it">Italy</option>
-                        <option value="za">South Africa</option>
-                        <option value="kr">South Korea</option>
-                        <option value="ng">Nigeria</option>
-                        <option value="rw">Rwanda</option>
-                        <option value="us">United States of America</option>
-                    </select>           
-                </form>
-            </div>
-            <div className="wrapper">
-                <section className="chartResults results">
-                    {trackList
-                    ? trackList.map(trackObj => {
-                        return (
-                            <div className="trackContainer" key={trackObj.track.track_id}>
-                                <p>Song: {trackObj.track.track_name}</p>
-                                <p>Album: {trackObj.track.album_name}</p>
-                                <p>Artist: {trackObj.track.artist_name}</p>
-                                <p>
-                                    Lyrics: <a target="_blank" rel="noopener noreferrer" href={trackObj.track.track_share_url}>Click here</a>
-                                </p>
-                            </div>
-                        );
-                        })
-                    : <p>Data not available at the moment. Please try after some time!</p>
-                }
-                </section>
-            </div>
+            <ChartForm userChoice={userChoice} handleChange={handleChange} />
+            <ChartResult trackList={trackList} />
         </section>
     )
 }
