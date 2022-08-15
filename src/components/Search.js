@@ -2,8 +2,8 @@
 import { useState } from "react";
 import SearchForm from "./SearchForm";
 import SearchResult from "./SearchResult";
-import ErrorPage from "./ErrorPage";
 
+// calls api once submits their search
 const Search = function () {
     const apiKey = "f2173fa361a5723207fc6a1fa4c6af56";
     const apiUrl = "https://quiet-ridge-74718.herokuapp.com/http://api.musixmatch.com/ws/1.1/matcher.track.get";
@@ -13,11 +13,11 @@ const Search = function () {
     const [ track, setTrack ] = useState({});
 
     function handleTitleInputChange (e) {
-    setUserInputTitle(e.target.value);
+    setUserInputTitle(e.target.value); //controlled input
     }
 
     function handleArtistInputChange (e) {
-        setUserInputArtist(e.target.value);
+        setUserInputArtist(e.target.value); //controlled input
     }
 
     function handleSubmit (e) {
@@ -38,13 +38,13 @@ const Search = function () {
                 }
             })
                 .then(function (jsonData) {
+                    setUserInputTitle("");
+                    setUserInputArtist("");
                     setTrack(jsonData.message.body.track);
 
                 })
-                .catch(function () {
-                    return (
-                        <ErrorPage />
-                    )
+                .catch(function (error) {
+                    console.log(error)
                 })
     }
     
@@ -53,11 +53,11 @@ const Search = function () {
             <SearchForm handleTitleInputChange={handleTitleInputChange} handleArtistInputChange={handleArtistInputChange} handleSubmit={handleSubmit} />
     
             {
-                track.track_name
-                ? 
-                <SearchResult trackName={track.track_name} artistName={track.artist_name} albumName={track.album_name} trackLyrics={track.track_share_url} trackGenre={track.primary_genres.music_genre_list[0].music_genre.music_genre_name} />
-                : 
-                null		
+            track.track_name
+            ? 
+            <SearchResult trackName={track.track_name} artistName={track.artist_name} albumName={track.album_name} trackLyrics={track.track_share_url} trackGenre={track.primary_genres.music_genre_list[0].music_genre.music_genre_name} />
+            : 
+            null		
             }
         </section>
     )

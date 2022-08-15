@@ -98,6 +98,7 @@ h1 {
 h2 {
   color: white;
   text-align: center;
+  font-size: 1.2rem;
   padding-bottom: 1rem;
 }
 
@@ -127,6 +128,8 @@ header .landingNav {
   text-decoration: none;  
   padding: 0.5rem 1rem;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+  -webkit-box-shadow: 8px 8px 0px 4px #1A535C; 
+  box-shadow: 8px 8px 0px 4px #1A535C;
 }
 
 .landingNav a:hover {

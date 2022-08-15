@@ -1,3 +1,6 @@
+// ChartResult component is called once 
+
+
 const ChartResult = ({trackList}) => {
     return(
         <div className="wrapper">

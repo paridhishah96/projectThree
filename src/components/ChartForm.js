@@ -2,7 +2,7 @@ const ChartForm = ({handleChange, userChoice}) => {
     return (
         <div className="wrapper">
                 <form>
-                    <label htmlFor="countrySelect">Select a Country</label>
+                    <label htmlFor="countrySelect">Select a Country to See their Top 10 Songs </label>
                     <select 
                     id="countrySelect" 
                     name="countrySelect"
