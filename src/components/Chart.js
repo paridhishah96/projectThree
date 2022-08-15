@@ -8,12 +8,6 @@ const Chart = function () {
     const [ userChoice, setUserChoice ] = useState("placeholder");
     const [ trackList, setTrackList ] = useState([]);
 
-    // const handleChange = (e) => {
-    //     e.preventDefault();
-    //     setUserChoice(e.target.value);
-    //     getChartList();
-    // }
-
     const handleChange = (e) => {
         e.preventDefault();
         setUserChoice(e.target.value);
@@ -29,25 +23,23 @@ const Chart = function () {
         fetch(url)
             .then(function (response) {
                 if (response.ok) {
-                    console.log(response);
                     return response.json();
                 } else {
                     throw new Error();
                 }
             })
                 .then(function (jsonData) {
-                    console.log(jsonData);
                     setTrackList(jsonData.message.body.track_list);
     
                 })
                 .catch(function (error) {
                     console.log(error);
-                })
+                });
     }
 
     
     return (
-        <section className="chartSelect">
+        <section className="chartSelect" id="chart">
             <div className="wrapper">
                 <form>
                     <label htmlFor="countrySelect">Select a Country</label>
@@ -62,20 +54,21 @@ const Chart = function () {
                         <option value="br">Brazil</option>
                         <option value="ca">Canada</option>
                         <option value="cn">China</option>
+                        <option value="cr">Costa Rica</option>
                         <option value="cu">Cuba</option>
                         <option value="fr">France</option>
                         <option value="in">India</option>
                         <option value="it">Italy</option>
+                        <option value="za">South Africa</option>
                         <option value="kr">South Korea</option>
                         <option value="ng">Nigeria</option>
-                        <option value="qa">Qatar</option>
                         <option value="rw">Rwanda</option>
                         <option value="us">United States of America</option>
                     </select>           
                 </form>
             </div>
             <div className="wrapper">
-                <section className="chartResults">
+                <section className="chartResults results">
                     {trackList
                     ? trackList.map(trackObj => {
                         return (

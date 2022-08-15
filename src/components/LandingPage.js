@@ -1,4 +1,5 @@
 import { Link, Routes, Route } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import Chart from './Chart';
 import Search from './Search';
 
@@ -12,16 +13,17 @@ const LandingPage = () => {
             <div className="wrapper">
                 <h1>Song-tastic</h1>
                 <h2>Welcome to your one stop shop for everything songs!</h2>
+                <p>Select from options below</p>
             </div>
             <div className="landingNav">
                     <nav>
                         <ul>
 
                             <li>
-                                <Link to="/search">Info by Search</Link>
+                                <HashLink to="/search#search">Info by Search</HashLink>
                             </li>
                             <li>
-                                <Link to="/chart">Charts by Country</Link>
+                                <HashLink to="/chart#chart">Charts by Country</HashLink>
                             </li>
                         </ul>
                     </nav>

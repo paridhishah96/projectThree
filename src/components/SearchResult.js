@@ -2,17 +2,16 @@
 
 const SearchResult = ({trackName, artistName, albumName, trackLyrics, trackGenre}) => {
     return (
-        <section className='result wrapper'>
-            <p>Details about the song:</p>
+        <section className='results searchResult wrapper'>
 			<ul>						
 				<li>
-					<p>	Name of the Song: <span>{trackName}</span></p>
+					<p>Song: <span>{trackName}</span></p>
 				</li>
 				<li>
-					<p>	Artist Name: <span>{artistName}</span></p>
+					<p>	Artist: <span>{artistName}</span></p>
 				</li>
 				<li>
-					<p>	Album Name: <span>{albumName}</span></p>
+					<p>	Album: <span>{albumName}</span></p>
 				</li>
 				<li>
 					<p>
@@ -20,7 +19,7 @@ const SearchResult = ({trackName, artistName, albumName, trackLyrics, trackGenre
 					</p>
 				</li>
 				<li>
-					<p>Genre of the song is: <span>{trackGenre}</span></p>
+					<p>Genre: <span>{trackGenre}</span></p>
 				</li>			
 			</ul>
 		</section>

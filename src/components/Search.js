@@ -46,7 +46,7 @@ const Search = function () {
     }
     
     return (
-        <section>
+        <section id="search">
             <SearchForm handleTitleInputChange={handleTitleInputChange} handleArtistInputChange={handleArtistInputChange} handleSubmit={handleSubmit} />
     
             {
