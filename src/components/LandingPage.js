@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import Chart from './Chart';
 import Search from './Search';
-import ArtistDetails from './ArtistDetails';
+// import ArtistDetails from './ArtistDetails';
 
 
 
@@ -32,7 +32,6 @@ const LandingPage = () => {
             <Routes>
                 <Route path="/search" element={ <Search /> } />
                 <Route path="/chart" element={ <Chart /> } />
-                <Route path="/artist/:artistId" element={ <ArtistDetails />} />
             </Routes>
         </>
     )

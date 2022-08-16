@@ -17,7 +17,7 @@ const Chart = function () {
         url.search = new URLSearchParams({
             apikey: apiKey,
             country: userChoice,
-            chart_name: "hot",
+            chart_name: "top",
             page: 1,
             page_size: 10
         });
