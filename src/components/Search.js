@@ -45,8 +45,6 @@ const Search = function () {
                     console.log(error)
                 })
     }
-
-    // handleSubmit();
     
     return (
         <section id="search" className="searchParent">

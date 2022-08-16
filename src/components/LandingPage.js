@@ -2,9 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import Chart from './Chart';
 import Search from './Search';
-// import ArtistDetails from './ArtistDetails';
-
-
 
 const LandingPage = () => {
     

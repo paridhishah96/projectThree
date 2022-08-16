@@ -1,3 +1,7 @@
+// Content is displayed once search button is clicked on the landing page
+// once form is submitted, we go back to the search module to get API information
+
+
 const SearchForm = ({handleTitleInputChange, handleArtistInputChange,handleSubmit }) => {
     return (
         <div className='wrapper'>

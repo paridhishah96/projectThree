@@ -1,6 +1,6 @@
 // import { Link } from "react-router-dom";
 
-
+// The chart is displayed once chartForm is submitted and the API data is received from the Chart component
 const ChartResult = ({trackList}) => {
     return(
         <div className="wrapper">
