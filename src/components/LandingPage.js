@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import Chart from './Chart';
+import ErrorPage from './ErrorPage';
 import Search from './Search';
 
 const LandingPage = () => {
@@ -29,6 +30,7 @@ const LandingPage = () => {
             <Routes>
                 <Route path="/search" element={ <Search /> } />
                 <Route path="/chart" element={ <Chart /> } />
+                <Route path="*" element={ <ErrorPage /> } />
             </Routes>
         </>
     )
