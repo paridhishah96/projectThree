@@ -38,8 +38,6 @@ const Search = function () {
                 }
             })
                 .then(function (jsonData) {
-                    setUserInputTitle("");
-                    setUserInputArtist("");
                     setTrack(jsonData.message.body.track);
 
                 })
@@ -47,18 +45,28 @@ const Search = function () {
                     console.log(error)
                 })
     }
+
+    // handleSubmit();
     
     return (
-        <section id="search">
+        <section id="search" className="searchParent">
+            
+
             <SearchForm handleTitleInputChange={handleTitleInputChange} handleArtistInputChange={handleArtistInputChange} handleSubmit={handleSubmit} />
     
             {
-            track.track_name
+            track === undefined
             ? 
-            <SearchResult trackName={track.track_name} artistName={track.artist_name} albumName={track.album_name} trackLyrics={track.track_share_url} trackGenre={track.primary_genres.music_genre_list[0].music_genre.music_genre_name} />
+            <p className="returnError">Please search for another song and artist! The information provided above does not match a song from our database</p>		
             : 
-            null		
-            }
+            (
+                track.track_name
+                ?
+                <SearchResult trackName={track.track_name} artistName={track.artist_name} albumName={track.album_name} trackLyrics={track.track_share_url} />
+                :
+                null
+            )
+        }
         </section>
     )
 }

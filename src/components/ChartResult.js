@@ -1,4 +1,4 @@
-// ChartResult component is called once 
+import { Link } from "react-router-dom";
 
 
 const ChartResult = ({trackList}) => {
@@ -11,7 +11,11 @@ const ChartResult = ({trackList}) => {
                         <div className="trackContainer" key={trackObj.track.track_id}>
                             <p>Song: {trackObj.track.track_name}</p>
                             <p>Album: {trackObj.track.album_name}</p>
-                            <p>Artist: {trackObj.track.artist_name}</p>
+                            <p>Artist: 
+                                <Link to="/artist/:artistId">
+                                        {trackObj.track.artist_name}
+                                </Link>
+                            </p>
                             <p>
                                 Lyrics: <a target="_blank" rel="noopener noreferrer" href={trackObj.track.track_share_url}>Click here</a>
                             </p>

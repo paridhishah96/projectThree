@@ -1,5 +1,5 @@
 // Routes to this page once someone clicks on the Link to show top song chart by user selected country
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ChartForm from "./ChartForm";
 import ChartResult from "./ChartResult";
 
@@ -12,10 +12,7 @@ const Chart = function () {
     const [ userChoice, setUserChoice ] = useState("placeholder");
     const [ trackList, setTrackList ] = useState([]);
 
-    const handleChange = (e) => {
-        e.preventDefault();
-        setUserChoice(e.target.value); //set user choice of country as the userChoice state to use while fetching API
-
+    useEffect(() => {
         const url = new URL(apiUrl);
         url.search = new URLSearchParams({
             apikey: apiKey,
@@ -39,13 +36,19 @@ const Chart = function () {
                 .catch(function (error) {
                     console.log(error);
                 });
+    }, [userChoice])
+
+
+    const handleChange = (e) => {
+        e.preventDefault();
+        setUserChoice(e.target.value); //set user choice of country as the userChoice state to use while fetching API        
     }
 
     // the first component is a Form that returns the user selection and runs the API call function, after which the track list is passed to second component to render on page
     return (
         <section className="chartSelect" id="chart">
             <ChartForm userChoice={userChoice} handleChange={handleChange} /> 
-            <ChartResult trackList={trackList} />
+            <ChartResult trackList={trackList}/>
         </section>
     )
 }

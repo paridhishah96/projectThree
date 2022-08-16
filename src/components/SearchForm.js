@@ -8,7 +8,7 @@ const SearchForm = ({handleTitleInputChange, handleArtistInputChange,handleSubmi
 				<label htmlFor="artistName">Artist</label>
 				<input onChange={handleArtistInputChange} placeholder="Try Stromae"  type="artistName" name="artistName" required/>
 
-				<button>Show Details</button>
+				<button type="submit">Show Details</button>
 			</form>
 		</div>
     )

@@ -15,6 +15,3 @@ function App() {
 
 
 export default App;
-
-
-// error handle for all API calls
