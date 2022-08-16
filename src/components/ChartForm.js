@@ -16,7 +16,6 @@ const ChartForm = ({handleChange, userChoice}) => {
                     <option value="au">Australia</option>
                     <option value="br">Brazil</option>
                     <option value="ca">Canada</option>
-                    <option value="cn">China</option>
                     <option value="cr">Costa Rica</option>
                     <option value="cu">Cuba</option>
                     <option value="fr">France</option>
