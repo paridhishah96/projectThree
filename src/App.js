@@ -1,11 +1,17 @@
 import './App.css';
+import Footer from './components/Footer';
+import LandingPage from './components/LandingPage';
+
 
 function App() {
-  return (
-    <div className="App">
-      <h1>my react app</h1>
-    </div>
-  );
+return (
+		<div className="App">
+			<LandingPage />
+
+			<Footer />
+		</div>
+  	);
 }
+
 
 export default App;
