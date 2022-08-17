@@ -6,7 +6,7 @@ import ChartResult from "./ChartResult";
 
 // calls api once user selects a country from the options provided
 const Chart = function () {
-    const apiKey = "f2173fa361a5723207fc6a1fa4c6af56";
+    const apiKey = "f1fc157fc587725a2aa64311ce48541f";
     const apiUrl = "https://quiet-ridge-74718.herokuapp.com/http://api.musixmatch.com/ws/1.1/chart.tracks.get";
 
     const [ userChoice, setUserChoice ] = useState("placeholder");
