@@ -1,5 +1,6 @@
 // Routes to this page once someone clicks on the Link Search to show info about songs
 import { useState } from "react";
+import ErrorPage from "./ErrorPage";
 import SearchForm from "./SearchForm";
 import SearchResult from "./SearchResult";
 
@@ -41,8 +42,10 @@ const Search = function () {
                     setTrack(jsonData.message.body.track);
 
                 })
-                .catch(function (error) {
-                    console.log(error)
+                .catch(function () {
+                    return (
+                        <ErrorPage />
+                    )
                 })
     }
     

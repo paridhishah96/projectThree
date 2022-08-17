@@ -132,15 +132,11 @@ header .landingNav {
   box-shadow: 8px 8px 0px 4px #1A535C;
 }
 
-.landingNav a:hover {
+.landingNav a:hover,
+.landingNav a:focus {
   color: #1A535C;
   background-color: white;
   border: #1A535C 2px solid;
-}
-
-.landingNav a:focus {
-  color: #1A535C;   
-  background-color: white;
 }
 
 /* form styling */
@@ -181,11 +177,7 @@ form button {
   transition: 0.3s color ease-in-out, background-color 0.3s ease-in-out ;
 }
 
-form button:hover {
-  color: #1A535C;
-  background-color: white;
-}
-
+form button:hover,
 form button:focus {
   color: #1A535C;
   background-color: white;
@@ -205,10 +197,7 @@ form select {
   transition: color 0.3s ease-in-out;
 }
 
-.results a:hover {
-  color: #ff6b6b;
-}
-
+.results a:hover,
 .results a:focus {
   color: #ff6b6b;
 }
@@ -272,7 +261,7 @@ form select {
 .chartResults .trackContainer {
   border: #1A535C 2px solid;
   border-radius: 5px;
-  padding: 1rem 0 0.75rem 0.5rem;
+  padding: 1rem 0.5rem 0.75rem 0.5rem;
 }
 
 .trackContainer p {
@@ -303,14 +292,10 @@ footer a {
   transition: color 0.3s ease-in-out;
 }
 
-footer a:hover {
-  color: #ff6b6b;
-}
-
+footer a:hover,
 footer a:focus {
   color: #ff6b6b;
 }
-
 
 /* media queries */
 
@@ -337,6 +322,10 @@ footer a:focus {
 
   .landingNav li {
     padding: 2rem 0;
+  }
+
+  form label {
+    padding: 0rem 0.5rem;
   }
 
   .wrapper .artistAlbums,

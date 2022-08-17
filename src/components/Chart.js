@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import ChartForm from "./ChartForm";
 import ChartResult from "./ChartResult";
+import ErrorPage from "./ErrorPage";
 
 
 // calls api once user selects a country from the options provided
@@ -33,8 +34,10 @@ const Chart = function () {
                     // if API call is successful, set trackList state to the track list  
                     setTrackList(jsonData.message.body.track_list);
                 })
-                .catch(function (error) {
-                    console.log(error);
+                .catch(function () {
+                    return (
+                        <ErrorPage />
+                    )
                 });
     }, [userChoice])
 
