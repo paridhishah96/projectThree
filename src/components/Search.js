@@ -4,6 +4,7 @@ import ErrorPage from "./ErrorPage";
 import SearchForm from "./SearchForm";
 import SearchResult from "./SearchResult";
 
+
 // calls api once submits their search
 const Search = function () {
     const apiKey = "f1fc157fc587725a2aa64311ce48541f";
@@ -38,7 +39,9 @@ const Search = function () {
                     throw new Error();
                 }
             })
-                .then(function (jsonData) {
+            .then(function (jsonData) {
+                    e.target.children[1].value = ""; //making sure input is blank after submit
+                    e.target.children[3].value = ""; //making sure input is blank after submit
                     setTrack(jsonData.message.body.track);
 
                 })
